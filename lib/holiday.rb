@@ -21,23 +21,18 @@ def second_supply_for_fourth_of_july(holiday_hash)
 end
 
 def add_supply_to_winter_holidays(holiday_hash, supply)
-  holiday_hash[:winter][:christmas] << supply
-  holiday_hash[:winter][:new_years] << supply
-  return holiday_hash
+  holiday_hash[:winter].keys.each do |holiday|
+    holiday_hash[:winter][holiday] << supply
+  end
 end
 
 
 def add_supply_to_memorial_day(holiday_hash, supply)
   holiday_hash[:spring][:memorial_day] << supply
-  return holiday_hash
 end
 
 def add_new_holiday_with_supplies(holiday_hash, season, holiday_name, supply_array)
-  # code here
-  # remember to return the updated hash
-  holiday_hash[season] = {
-    holiday_name => supply_array
-  }
+  holiday_hash[season][holiday_name] = supply_array
   return holiday_hash
 end
 
@@ -46,13 +41,6 @@ def all_winter_holiday_supplies(holiday_hash)
 end
 
 def all_supplies_in_holidays(holiday_hash)
-  # iterate through holiday_hash and print items such that your readout resembles:
-  # Winter:
-  #   Christmas: Lights, Wreath
-  #   New Years: Party Hats
-  # Summer:
-  #   Fourth Of July: Fireworks, BBQ
-  # etc.
   holiday_hash.each do |season, holidays|
     capitalized_season = season.to_s.capitalize! + ':'
     puts capitalized_season
