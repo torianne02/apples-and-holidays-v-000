@@ -23,6 +23,7 @@ end
 def add_supply_to_winter_holidays(holiday_hash, supply)
   holiday_hash[:winter].keys.each do |holiday|
     holiday_hash[:winter][holiday] << supply
+  end
 end
 
 
